@@ -21,6 +21,8 @@ server.register([{
     // An error will be available here if anything goes wrong
 });
 
+var bookshelf = server.plugins.bookshelf;
+
 server.route([{
     path: '/api/users',
     method: 'GET',
@@ -34,12 +36,18 @@ server.route([{
     path: '/api/users/{userId}',
     method: 'GET',
     handler: function (request, reply) {
-        server.plugins.bookshelf.model('User').where({id: request.params.userId}).fetch().then(function(user){
-            user.roles().fetch().then(function(roles){
-                reply(roles);
+        //server.plugins.bookshelf.model('User').where({id: request.params.userId}).fetch().then(function(user){
+        //    user.roles().fetch().then(function(roles){
+        //        reply(roles);
+        //});
+        bookshelf
+        .model('User')
+        .where({id: request.params.userId})
+        .fetch({withRelated: 'roles'})
+        .then(function(user){
+            reply(user);
         });
-    });
-}
+    }
 }]);
 
 server.start(function () {
