@@ -1,0 +1,26 @@
+{
+  "name": "hapijs-bookshelf-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antond/hapijs-bookshelf-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antond/hapijs-bookshelf-example/issues"
+  },
+  "homepage": "https://github.com/antond/hapijs-bookshelf-example",
+  "dependencies": {
+    "bookshelf": "^0.7.9",
+    "checkit": "^0.2.0-pre",
+    "hapi": "^8.1.0",
+    "knex": "^0.7.3",
+    "pg": "^4.2.0"
+  }
+}
