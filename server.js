@@ -34,10 +34,12 @@ server.route([{
     path: '/api/users/{userId}',
     method: 'GET',
     handler: function (request, reply) {
-        server.plugins.bookshelf.model('User').where({id: request.params.userId}).roles().fetch().then(function(roles){
-            reply(roles);
+        server.plugins.bookshelf.model('User').where({id: request.params.userId}).fetch().then(function(user){
+            user.roles().fetch().then(function(roles){
+                reply(roles);
         });
-    }
+    });
+}
 }]);
 
 server.start(function () {
