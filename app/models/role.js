@@ -1,11 +1,9 @@
-module.exports = function(Bookshelf) {
+module.exports = function(bookshelf) {
     'use strict';
-
-    var User = require('./user');
 
     var checkit = require('checkit');
 
-    return Bookshelf.Model.extend({
+    return bookshelf.extend({
         initialize: function () {
             this.on('saving', this.validateSave);
         },
@@ -15,8 +13,6 @@ module.exports = function(Bookshelf) {
             })
             .run(this.attributes);
         },
-        user: function() {
-            return this.belongsToMany(User);
-        },
+        tableName: 'vwe_role'
     });
 };

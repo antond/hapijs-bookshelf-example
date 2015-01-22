@@ -1,11 +1,9 @@
-module.exports = function(Bookshelf) {
+module.exports = function(bookshelf) {
     'use strict';
-
-    var Role = require('./role')(Bookshelf);
 
     var checkit = require('checkit');
 
-    return Bookshelf.Model.extend({
+    return bookshelf.extend({
         initialize: function () {
             this.on('saving', this.validateSave);
         },
@@ -16,7 +14,7 @@ module.exports = function(Bookshelf) {
             .run(this.attributes);
         },
         roles: function () {
-            return this.hasMany(Role);
+            return this.belongsToMany('Role', 'vwe_user_to_role', 'vwe_user_id', 'vwe_role_id');
         },
         tableName: 'vwe_user'
     });

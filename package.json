@@ -20,6 +20,7 @@
     "bookshelf": "^0.7.9",
     "checkit": "^0.2.0-pre",
     "hapi": "^8.1.0",
+    "hapi-bookshelf-models": "^1.0.4",
     "knex": "^0.7.3",
     "pg": "^4.2.0"
   }
